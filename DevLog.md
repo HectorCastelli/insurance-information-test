@@ -85,3 +85,12 @@ I will start by testing the Authentication-related functionality, since there is
 #### Users & Policies
 
 For users and policies, there is not a lot of functionality, so the Unit tests will be fairly simple. They only include test-data for each case of the search functionality.
+
+### Goals for next session
+
+My plans for the next sit-down session are:
+
+- Start writing Database Service
+- Implement Authentication Service and Controller
+- Create authentication middleware to filter-by-role
+- Add request object validation middleware (with Celebrate and JOI)
