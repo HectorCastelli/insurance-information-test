@@ -94,3 +94,19 @@ My plans for the next sit-down session are:
 - Implement Authentication Service and Controller
 - Create authentication middleware to filter-by-role
 - Add request object validation middleware (with Celebrate and JOI)
+
+## Integrating Data
+
+I decided to get started on the Database aspect of the project as my first item on the last session. To achieve this I will start by creating the necessary methods to query the data from the two URLs.
+
+Instead of adding another library like JSON-Query, I decided to use Array functions to filter and map the Arrays retrieved from the website into the necessary objects.
+
+### A change of plans
+
+I have run into a service outage from *mocky.io* (the website hosting the data), so, I've decided it would be most prudent to save that data locally in JSON objects to avoid this situation in the future.
+
+The current data (as of *04/06/2020*) is now saved under the `data` directory.
+
+### Implementing Authentication
+
+Now that we have a functional Database Service, it's time to implement the first part of logic: Authentication.
