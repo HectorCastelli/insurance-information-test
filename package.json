@@ -1,0 +1,36 @@
+{
+  "name": "insurance-information-test",
+  "version": "0.0.1",
+  "description": "A sample/test application that manages insurance information (mock data).",
+  "main": "src/api.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "launch": "node ./src/api.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HectorCastelli/insurance-information-test.git"
+  },
+  "keywords": [
+    "test",
+    "insurance",
+    "mock",
+    "interview"
+  ],
+  "author": "Hector Castelli Zacharias",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/HectorCastelli/insurance-information-test/issues"
+  },
+  "homepage": "https://github.com/HectorCastelli/insurance-information-test#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.4.0",
+    "eslint-config-google": "^0.14.0"
+  }
+}
