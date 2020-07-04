@@ -64,6 +64,24 @@ My plans for the next sit-down session are:
 
 To achieve the goals listed before, I started by starting up a NPM project and added Express.js and ESLINT, using Google's default configuration for convenience.
 
+### Basic API
+
 Then, I started to establish the general structure of the API codebase without implementing any functionality. This way, I can write the tests and the mocks before moving into implementation.
 
-I will start by testing the Authentication-related functionality, since there is not a lot of overlap with the other services. I will first write unit tests for basic JWT manipulation, then move on to write integration tests with API calls.
+The project is structured under two main folders: services and controllers.
+
+The goal is to separate the business logic from the API mappings. So, in short terms, anything related to Express.js and how the HTTP request/response exchange works will be under controllers. Anything related to processing would be under services.
+
+### Unit testing and Service Mocking
+
+The idea is to start by writing unit tests, based on the anticipated functionality that each Service will need to serve the necessary data to the users.
+
+This way, the methods will be implemented on each Service and the Controller methods only need to call these.
+
+#### Authentication
+
+I will start by testing the Authentication-related functionality, since there is not a lot of overlap with the other services. I will first write unit tests for basic JWT manipulation, then move on to write integration tests with API calls at a later time.
+
+#### User
+
+For users, there is not a lot of functionality, so the Unit tests will be fairly simple.
