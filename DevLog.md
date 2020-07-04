@@ -82,6 +82,6 @@ This way, the methods will be implemented on each Service and the Controller met
 
 I will start by testing the Authentication-related functionality, since there is not a lot of overlap with the other services. I will first write unit tests for basic JWT manipulation, then move on to write integration tests with API calls at a later time.
 
-#### User
+#### Users & Policies
 
-For users, there is not a lot of functionality, so the Unit tests will be fairly simple.
+For users and policies, there is not a lot of functionality, so the Unit tests will be fairly simple. They only include test-data for each case of the search functionality.
