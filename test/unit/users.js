@@ -45,4 +45,4 @@ describe('Users Service', () => {
       done();
     });
   });
-}
+});

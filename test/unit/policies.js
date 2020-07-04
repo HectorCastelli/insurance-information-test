@@ -40,4 +40,4 @@ describe('Policies Service', () => {
       done();
     });
   });
-}
+});

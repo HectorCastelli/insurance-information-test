@@ -1,6 +1,9 @@
 const express = require('express');
 const app = express();
 
+const BodyParser = require('body-parser');
+app.use(BodyParser.json());
+
 const port = 3000;
 
 app.get('/', (req, res) => res.send('Hello World!'));
@@ -15,6 +18,16 @@ app.use('/policies', policiesRouter);
 const usersRouter = require('./controllers/users');
 app.use('/users', usersRouter);
 
+const { ValidationError } = require('express-validation');
+app.use((err, req, res, next) => {
+  if (err instanceof ValidationError) {
+    return res.status(403).json(err);
+  }
+  return res.status(500).json(err);
+});
+
 app.listen(port, () => {
   console.log(`Insurance Information listening at http://localhost:${port}`);
 });
+
+module.exports = app;

@@ -93,7 +93,7 @@ My plans for the next sit-down session are:
 - Start writing Database Service
 - Implement Authentication Service and Controller
 - Create authentication middleware to filter-by-role
-- Add request object validation middleware (with Celebrate and JOI)
+- Add request object validation middleware (with express-validation and JOI)
 
 ## Integrating Data
 
@@ -110,3 +110,31 @@ The current data (as of *04/06/2020*) is now saved under the `data` directory.
 ### Implementing Authentication
 
 Now that we have a functional Database Service, it's time to implement the first part of logic: Authentication.
+
+Implementing this logic means basically just mapping JWT methods to more friendly names and using the methods from Database Service to find the relevant Users and then encode a JWT claim.
+
+After some slight modifications and some changes to the testing syntax, I was able to get all the test to run successfully, meaning I am ready to move on to the next task.
+
+### Authentication Middleware
+
+To keep the project neat and tidy, I've created a new folder: `middleware`.
+
+This middleware is an important step into access-control, so I will need to write some tests for it. It's functionality will be fairly simple: analyze a JWT token attached to the Authorization header on the Request and verify that its:
+
+- Valid
+- Not expired
+- Has the correct role
+
+If any of these conditions fail, the request should be rejected with the appropriate error.
+
+### Data validation
+
+Since the API relies on data being passed either by URL or by the Request's Body, some validation needs to be implemented.
+
+To do this in an easy manner, I will user [express-validation](https://www.npmjs.com/package/express-validation) to add a simple middleware that uses [joi](https://github.com/hapijs/joi) to validate JSON objects.
+
+### Validating Authentication endpoint
+
+After the data-validation aspect was added to the Authentication controller, some integration tests needed to be added, to make sure the HTTP requests would behave as expected.
+
+This was done with Chai-HTTP and was fairly straightforward.
