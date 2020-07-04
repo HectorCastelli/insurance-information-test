@@ -57,10 +57,14 @@ class AuthenticationService {
     const database = new DatabaseService();
     const email = authenticationData.email;
     const selectedUser = database.clients.find((client) => client.email === email);
-    return this.encodeData({
-      'id': selectedUser.id,
-      'role': selectedUser.role,
-    });
+    if (selectedUser) {
+      return this.encodeData({
+        'id': selectedUser.id,
+        'role': selectedUser.role,
+      });
+    } else {
+      throw new Error(`No user was found with the email: "${email}"`);
+    }
   }
 }
 
