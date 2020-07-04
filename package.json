@@ -8,7 +8,7 @@
   },
   "scripts": {
     "launch": "node ./src/api.js",
-    "test": "mocha"
+    "test": "mocha --recursive"
   },
   "repository": {
     "type": "git",

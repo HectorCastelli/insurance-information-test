@@ -1,27 +1,33 @@
+const { JsonWebTokenError } = require('jsonwebtoken');
+
 const expect = require('chai').expect;
 
-const authService = require('../../src/services/authentication');
-
 describe('Authentication Service', () => {
+  const AuthenticationService = require('../../src/services/authentication');
+  const authService = new AuthenticationService();
+  before((done) => {
+    this.authService = new AuthenticationService();
+    done();
+  });
   describe('JWT Manipulation', () => {
     it('Verify the secret key for JWT is loaded', (done) => {
-      expect(authService.getSecretKey()).to.be.a('string');
+      expect(authService.getSecretKey).to.be.a('string');
       done();
     });
     it('Verify the secret key for JWT is "good"', (done) => {
-      expect(authService.getSecretKey()).to.have.lengthOf.at.least(10);
+      expect(authService.getSecretKey).to.have.lengthOf.at.least(10);
       done();
     });
     it('Successfully encodes and decodes data into JWT token', (done) => {
       const data = 'testData';
       const encoded = authService.encodeData(data);
       const decoded = authService.decodeData(encoded);
-      expect(data).to.be.equal(decoded).and.to.not.be.equal(encoded);
+      expect(decoded).to.be.equal(data).and.to.not.be.equal(encoded);
       done();
     });
     it('Returns error when invalid JWT token is decoded', (done) => {
       const invalidJWT = '';
-      expect(authService.decodeData(invalidJWT)).to.throw(TypeError);
+      expect(authService.decodeData.bind(authService, invalidJWT)).to.throw(JsonWebTokenError);
       done();
     });
   });
@@ -31,7 +37,7 @@ describe('Authentication Service', () => {
         email: 'julietteblankenship@quotezart.com',
       };
       const encoded = authService.authenticate(mockAuthenticationObject);
-      expect(authService.decodeData(encoded)).to.not.throw(TypeError).and.has.property('email').and.has.property('role');
+      expect(authService.decodeData(encoded)).to.have.property('role');
       done();
     });
     it('Returns JWT for User with "user" role', (done) => {
@@ -39,7 +45,7 @@ describe('Authentication Service', () => {
         email: 'goodblankenship@quotezart.com',
       };
       const encoded = authService.authenticate(mockAuthenticationObject);
-      expect(authService.decodeData(encoded)).to.not.throw(TypeError).and.has.property('email').and.has.property('role', 'user');
+      expect(authService.decodeData(encoded)).to.have.property('role', 'user');
       done();
     });
     it('Returns JWT for User with "admin" role', (done) => {
@@ -47,7 +53,7 @@ describe('Authentication Service', () => {
         email: 'julietteblankenship@quotezart.com',
       };
       const encoded = authService.authenticate(mockAuthenticationObject);
-      expect(authService.decodeData(encoded)).to.not.throw(TypeError).and.has.property('email').and.has.property('role', 'admin');
+      expect(authService.decodeData(encoded)).to.have.property('role', 'admin');
       done();
     });
   });

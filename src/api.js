@@ -15,6 +15,6 @@ app.use('/policies', policiesRouter);
 const usersRouter = require('./controllers/users');
 app.use('/users', usersRouter);
 
-app.listen(port, () =>
-  console.log(`Insurance Information listening at http://localhost:${port}`),
-);
+app.listen(port, () => {
+  console.log(`Insurance Information listening at http://localhost:${port}`);
+});
