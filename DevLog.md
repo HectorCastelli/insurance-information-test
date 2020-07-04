@@ -59,3 +59,11 @@ My plans for the next sit-down session are:
 - Mock User-related tests for Admin and User roles
 - Mock Policy-related tests for Admin and User roles
 - Document session and plan next-steps
+
+## Bootstrapping
+
+To achieve the goals listed before, I started by starting up a NPM project and added Express.js and ESLINT, using Google's default configuration for convenience.
+
+Then, I started to establish the general structure of the API codebase without implementing any functionality. This way, I can write the tests and the mocks before moving into implementation.
+
+I will start by testing the Authentication-related functionality, since there is not a lot of overlap with the other services. I will first write unit tests for basic JWT manipulation, then move on to write integration tests with API calls.
