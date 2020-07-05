@@ -23,7 +23,7 @@ function authenticationMiddleware(...acceptedRoles) {
     if (authHeader) {
       const authService = new AuthenticationService();
       const JWTClaim = authService.decodeData(authHeader);
-      if (JWTClaim && this.checkPermission(JWTClaim.role, acceptedRoles)) {
+      if (JWTClaim && checkPermission(JWTClaim.role, acceptedRoles)) {
         next();
       } else {
         response.status(403).json({

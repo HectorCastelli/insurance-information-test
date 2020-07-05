@@ -5,7 +5,7 @@ const expect = chai.expect;
 
 chai.use(chaiHttp);
 
-describe('Authentication Service', () => {
+describe('Authentication Controller', () => {
   const AuthenticationService = require('../../src/services/authentication');
   describe('Authenticates a user', () => {
     it('When the request is valid expect the response to be a valid JWT token', (done) => {

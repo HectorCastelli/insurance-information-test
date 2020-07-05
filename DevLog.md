@@ -147,3 +147,10 @@ Since the Authentication and Database Service are finally working, we can start 
 - Adding Authentication to User Controller
 - Integration testing for User Controller (with authentication)
 - Implementing Policy Service
+
+## Implementing Logic
+
+As mentioned before, the goal of this session is to implement the rest of the logic on the API.
+
+To start with this, let's move to the Users Service.
+
