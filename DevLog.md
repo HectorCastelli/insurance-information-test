@@ -138,3 +138,12 @@ To do this in an easy manner, I will user [express-validation](https://www.npmjs
 After the data-validation aspect was added to the Authentication controller, some integration tests needed to be added, to make sure the HTTP requests would behave as expected.
 
 This was done with Chai-HTTP and was fairly straightforward.
+
+### Where to go from here
+
+Since the Authentication and Database Service are finally working, we can start validating the authentication middleware and can focus on implementing the rest of the logic. For the next session, I plan on:
+
+- Implementing User Service & Controller (without authentication)
+- Adding Authentication to User Controller
+- Integration testing for User Controller (with authentication)
+- Implementing Policy Service
