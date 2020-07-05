@@ -154,3 +154,20 @@ As mentioned before, the goal of this session is to implement the rest of the lo
 
 To start with this, let's move to the Users Service.
 
+### The User Service
+
+I've decided to start on the User Service with the Service. After creating a service that can successfully search for one or more Users by Name or IDs, I was able to setup Unit tests.
+
+One these tests were done, I started focusing on the Controllers, the functionality I had planned at first was to have two endpoints: `users/` and `users/{id}`, to search for user by name or to open users by ID. But I realized that I could incorporate Searches by IDs on the `users/` endpoint as well, allowing users to search multiple IDs and get multiple Users with a single API call.
+
+To support this decision I went back to Controller and added some logic to treat cases where a user searches for a User by their Name **and** their ID. Before my fix, this would lead to duplicate Users being returned, and since that would be inconvenient for the API users, I decided to treat this situation before returning.
+
+After adding more tests for these aspects, I was ready to move into the Authentication part of the User Controller.
+
+### Adding Access-Control with Middleware
+
+As I had expected, my Middleware was able to filter the requests based on the `Authentication` header.
+
+After fixing a small syntax mistake (using `this` in the wrong context), I then proceeded to add test-cases on my Controller for making API calls authenticated as an Admin, a User and as a third (incorrect) role.
+
+Now, knowing that this structure works, I am able to move into the Policy Controller with more confidence that the technical aspect works.
