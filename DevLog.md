@@ -227,3 +227,7 @@ This can done running  `npm run dev-docs` and will create a documentation folder
 ### Creating a user-manual
 
 The documentation for end-users is very important. I have chosen to write the documentation by hand, to make sure that its cohesive and has all the necessary information.
+
+### Checking Code quality
+
+Due to the integration of ESLINT since the beginning of the project, no obvious problems were found by a code-analysis tool.
