@@ -171,3 +171,20 @@ As I had expected, my Middleware was able to filter the requests based on the `A
 After fixing a small syntax mistake (using `this` in the wrong context), I then proceeded to add test-cases on my Controller for making API calls authenticated as an Admin, a User and as a third (incorrect) role.
 
 Now, knowing that this structure works, I am able to move into the Policy Controller with more confidence that the technical aspect works.
+
+### Making the Policy Service work
+
+Since the foundations and the models are almost all established from the User Controller and Service, this is mostly an adaptation.
+
+The idea to have similar structure and functionality should increase familiarity when working with other Services in the future, so, setting a standard in this case is an advantage.
+
+Because each policy have two fields that could be tied to users, I had to make a decision on how to interpret them.
+
+This being the case I chose to see the field `email` and the "advisor" that is responsible, from the side of the company, for the specific policy, while `clientId` is the "client", that will be the beneficiary of the policy.
+
+With this in mind, I decided to provide two ways to search for policies:
+
+- Search by Client ID; or
+- Search by Advisor Email.
+
+This way, this API could be used in a versatile way to compile information for reports like: "Which clients are under my belt?" and "How many policies this client has with us?".
