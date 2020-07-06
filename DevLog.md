@@ -188,3 +188,13 @@ With this in mind, I decided to provide two ways to search for policies:
 - Search by Advisor Email.
 
 This way, this API could be used in a versatile way to compile information for reports like: "Which clients are under my belt?" and "How many policies this client has with us?".
+
+### Final session
+
+For the last session of development, my hopes are:
+
+- Create a user-manual for the API
+- Run the codebase against code-quality tools to spot and fix problems
+- Compile a developer-facing documentation page (from the JSDocs comments)
+- Update Github repository with Tags relevant to each session
+- Update README with instructions to run and test the API
