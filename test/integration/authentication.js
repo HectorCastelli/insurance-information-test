@@ -7,7 +7,7 @@ chai.use(chaiHttp);
 
 describe('Authentication Controller', () => {
   const AuthenticationService = require('../../src/services/authentication');
-  describe('Authenticates a user', () => {
+  describe('Authenticates a client', () => {
     it('When the request is valid expect the response to be a valid JWT token', (done) => {
       const mockAuthenticationObject = {
         email: 'britneyblankenship@quotezart.com',
@@ -47,9 +47,9 @@ describe('Authentication Controller', () => {
       });
       done();
     });
-    it('When the user is not found, return 404 error with explanation', (done) => {
+    it('When the client is not found, return 404 error with explanation', (done) => {
       const mockAuthenticationObject = {
-        email: 'user-that-does-not-exist@test.com',
+        email: 'client-that-does-not-exist@test.com',
       };
       chai.request(api).post('/authentication').send(mockAuthenticationObject).end((error, res) => {
         expect(res).to.have.status(404);

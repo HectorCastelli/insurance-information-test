@@ -3,7 +3,7 @@ const AuthenticationService = require('../services/authentication');
 /**
  * Checks if a role is on the list of acceptedRoles
  *
- * @param {string} role The current user Role
+ * @param {string} role The current client Role
  * @param {array<string>} acceptedRoles The list of accepted Roles
  * @return {boolean}
  */

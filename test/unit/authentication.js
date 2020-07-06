@@ -31,8 +31,8 @@ describe('Authentication Service', () => {
       done();
     });
   });
-  describe('User Authentication', () => {
-    it('Returns valid JTW for valid User', (done) => {
+  describe('Client Authentication', () => {
+    it('Returns valid JTW for valid Client', (done) => {
       const mockAuthenticationObject = {
         email: 'julietteblankenship@quotezart.com',
       };
@@ -40,7 +40,7 @@ describe('Authentication Service', () => {
       expect(authService.decodeData(encoded)).to.have.property('role');
       done();
     });
-    it('Returns JWT for User with "user" role', (done) => {
+    it('Returns JWT for Client with "user" role', (done) => {
       const mockAuthenticationObject = {
         email: 'goodblankenship@quotezart.com',
       };
@@ -48,7 +48,7 @@ describe('Authentication Service', () => {
       expect(authService.decodeData(encoded)).to.have.property('role', 'user');
       done();
     });
-    it('Returns JWT for User with "admin" role', (done) => {
+    it('Returns JWT for Client with "admin" role', (done) => {
       const mockAuthenticationObject = {
         email: 'julietteblankenship@quotezart.com',
       };

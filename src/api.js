@@ -15,8 +15,8 @@ app.use('/authentication', authenticationRouter);
 const policiesRouter = require('./controllers/policies');
 app.use('/policies', policiesRouter);
 
-const usersRouter = require('./controllers/users');
-app.use('/users', usersRouter);
+const clientsRouter = require('./controllers/clients');
+app.use('/clients', clientsRouter);
 
 const { ValidationError } = require('express-validation');
 app.use((err, req, res, next) => {

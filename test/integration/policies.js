@@ -67,7 +67,7 @@ describe('Policies Controller', () => {
           it('When the request is looking for Policies by two existing Advisor Emails', (done) => {
             // NOTE: This test-case is good for real-use but here it is meaningless. The dataset only has policies managed by inesblankenship@quotezart.com
             const mockSearchObject = {
-              advisors: ['inesblankenship@quotezart.com', 'another-sample-valid@user.domain'],
+              advisors: ['inesblankenship@quotezart.com', 'another-sample-valid@client.domain'],
             };
             chai.request(api).get('/policies').send(mockSearchObject).set('Authentication', authenticationToken).end((error, res) => {
               expect(res).to.have.status(200);
@@ -103,7 +103,7 @@ describe('Policies Controller', () => {
       });
     });
     describe('Fails', () => {
-      it('When the request is done by an unauthenticated User, then return 401 error', (done) => {
+      it('When the request is done by an unauthenticated Client, then return 401 error', (done) => {
         const mockSearchObject = {
           clients: ['e8fd159b-57c4-4d36-9bd7-a59ca13057bb'],
         };
@@ -113,7 +113,7 @@ describe('Policies Controller', () => {
         });
         done();
       });
-      it('When the request is done by an unauthorized User, then return 403 error', (done) => {
+      it('When the request is done by an unauthorized Client, then return 403 error', (done) => {
         const mockSearchObject = {
           clients: ['e8fd159b-57c4-4d36-9bd7-a59ca13057bb'],
         };
@@ -157,7 +157,7 @@ describe('Policies Controller', () => {
       });
     });
     describe('Fails', () => {
-      it('When the request is done by an unauthenticated User, then return 401 error', (done) => {
+      it('When the request is done by an unauthenticated Client, then return 401 error', (done) => {
         const mockPolicyId = '64cceef9-3a01-49ae-a23b-3761b604800b';
         chai.request(api).get(`/policies/${mockPolicyId}`).end((error, res) => {
           expect(res).to.have.status(401);
@@ -165,7 +165,7 @@ describe('Policies Controller', () => {
         });
         done();
       });
-      it('When the request is done by an unauthorized User, then return 403 error', (done) => {
+      it('When the request is done by an unauthorized Client, then return 403 error', (done) => {
         const mockPolicyId = '64cceef9-3a01-49ae-a23b-3761b604800b';
         const AuthenticationService = require('../../src/services/authentication');
         const mockAuthenticationClaim = {

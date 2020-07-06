@@ -28,22 +28,22 @@ describe('Policies Service', () => {
   });
   describe('Search by Client ID', () => {
     it('Fail when searching for null', (done) => {
-      expect(policiesService.searchByUserID.bind(policiesService, null)).to.throw(TypeError);
+      expect(policiesService.searchByClientID.bind(policiesService, null)).to.throw(TypeError);
       done();
     });
     it('Fail when searching for inexistent Policy', (done) => {
       const invalidClientId = '000';
-      expect(policiesService.searchByUserID(invalidClientId)).to.be.empty;
+      expect(policiesService.searchByClientID(invalidClientId)).to.be.empty;
       done();
     });
     it('Search for a single Policy', (done) => {
       const validClientId = 'e8fd159b-57c4-4d36-9bd7-a59ca13057bb';
-      expect(policiesService.searchByUserID(validClientId)).to.have.lengthOf(91);
+      expect(policiesService.searchByClientID(validClientId)).to.have.lengthOf(91);
       done();
     });
     it('Search for multiple Policies', (done) => {
       const validClientId = ['e8fd159b-57c4-4d36-9bd7-a59ca13057bb', 'a0ece5db-cd14-4f21-812f-966633e7be86'];
-      expect(policiesService.searchByUserID(...validClientId)).to.have.lengthOf(193);
+      expect(policiesService.searchByClientID(...validClientId)).to.have.lengthOf(193);
       done();
     });
   });
@@ -53,7 +53,7 @@ describe('Policies Service', () => {
       done();
     });
     it('Fail when searching for inexistent Policy', (done) => {
-      const invalidAdvisorEmail = 'invalid@user.domain';
+      const invalidAdvisorEmail = 'invalid@client.domain';
       expect(policiesService.searchByAdvisorEmail(invalidAdvisorEmail)).to.be.empty;
       done();
     });
@@ -64,7 +64,7 @@ describe('Policies Service', () => {
     });
     it('Search for multiple Policies', (done) => {
       // NOTE: This test-case is good for real-use but here it is meaningless. The dataset only has policies managed by inesblankenship@quotezart.com
-      const validAdvisorEmail = ['inesblankenship@quotezart.com', 'another-sample-valid@user.domain'];
+      const validAdvisorEmail = ['inesblankenship@quotezart.com', 'another-sample-valid@client.domain'];
       expect(policiesService.searchByAdvisorEmail(...validAdvisorEmail)).to.have.lengthOf(193);
       done();
     });

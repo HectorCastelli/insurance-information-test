@@ -20,7 +20,7 @@ router.get('/', authenticationMiddleware('admin'), validate(policySearchValidati
     'policies': [],
   };
   if (searchParameters.clients) {
-    policyService.searchByUserID(...searchParameters.clients).forEach((policy) => {
+    policyService.searchByClientID(...searchParameters.clients).forEach((policy) => {
       results.policies.push(policy);
     });
   }

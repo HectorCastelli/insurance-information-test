@@ -5,9 +5,9 @@ const expect = chai.expect;
 
 chai.use(chaiHttp);
 
-describe('Users Controller', () => {
+describe('Clients Controller', () => {
   describe('Search Functionality', () => {
-    describe('Returns a valid User', () => {
+    describe('Returns a valid Client', () => {
       describe('When executing as an Admin', () => {
         let authenticationToken = '';
         before((done) => {
@@ -22,31 +22,31 @@ describe('Users Controller', () => {
           done();
         });
         describe('Using IDs', () => {
-          it('When the request is looking for an User with existing ID', (done) => {
+          it('When the request is looking for an Client with existing ID', (done) => {
             const mockSearchObject = {
               ids: ['a0ece5db-cd14-4f21-812f-966633e7be86'],
             };
-            chai.request(api).get('/users').send(mockSearchObject).set('Authentication', authenticationToken).end((error, res) => {
+            chai.request(api).get('/clients').send(mockSearchObject).set('Authentication', authenticationToken).end((error, res) => {
               expect(res).to.have.status(200);
               expect(res.body).to.have.property('clients');
             });
             done();
           });
-          it('When the request is looking for Users by two existing IDs', (done) => {
+          it('When the request is looking for Clients by two existing IDs', (done) => {
             const mockSearchObject = {
               ids: ['a0ece5db-cd14-4f21-812f-966633e7be86', 'e8fd159b-57c4-4d36-9bd7-a59ca13057bb'],
             };
-            chai.request(api).get('/users').send(mockSearchObject).set('Authentication', authenticationToken).end((error, res) => {
+            chai.request(api).get('/clients').send(mockSearchObject).set('Authentication', authenticationToken).end((error, res) => {
               expect(res).to.have.status(200);
               expect(res.body).to.have.property('clients').with.lengthOf(2);
             });
             done();
           });
-          it('When the request is looking for Users by an existing ID and an inexistent ID', (done) => {
+          it('When the request is looking for Clients by an existing ID and an inexistent ID', (done) => {
             const mockSearchObject = {
               ids: ['a0ece5db-cd14-4f21-812f-966633e7be86', '000'],
             };
-            chai.request(api).get('/users').send(mockSearchObject).set('Authentication', authenticationToken).end((error, res) => {
+            chai.request(api).get('/clients').send(mockSearchObject).set('Authentication', authenticationToken).end((error, res) => {
               expect(res).to.have.status(200);
               expect(res.body).to.have.property('clients').with.lengthOf(1);
             });
@@ -54,32 +54,32 @@ describe('Users Controller', () => {
           });
         });
         describe('Using Names', () => {
-          it('When the request is looking for an User by a single existing Name', (done) => {
+          it('When the request is looking for an Client by a single existing Name', (done) => {
             const mockSearchObject = {
               names: ['Britney'],
             };
-            chai.request(api).get('/users').send(mockSearchObject).set('Authentication', authenticationToken).end((error, res) => {
+            chai.request(api).get('/clients').send(mockSearchObject).set('Authentication', authenticationToken).end((error, res) => {
               expect(res).to.have.status(200);
               expect(res.body).to.have.property('clients');
             });
             done();
           });
-          it('When the request is looking for Users by two existing Names', (done) => {
+          it('When the request is looking for Clients by two existing Names', (done) => {
             const mockSearchObject = {
               names: ['Britney', 'Manning'],
             };
-            chai.request(api).get('/users').send(mockSearchObject).set('Authentication', authenticationToken).end((error, res) => {
+            chai.request(api).get('/clients').send(mockSearchObject).set('Authentication', authenticationToken).end((error, res) => {
               expect(res).to.have.status(200);
               expect(res.body).to.have.property('clients').with.lengthOf(2);
             });
             done();
           });
-          it('When the request is looking for Users by an existing Name and an inexistent Name', (done) => {
+          it('When the request is looking for Clients by an existing Name and an inexistent Name', (done) => {
             const mockSearchObject = {
               ids: ['a0ece5db-cd14-4f21-812f-966633e7be86'],
               names: ['Britney'],
             };
-            chai.request(api).get('/users').send(mockSearchObject).set('Authentication', authenticationToken).end((error, res) => {
+            chai.request(api).get('/clients').send(mockSearchObject).set('Authentication', authenticationToken).end((error, res) => {
               expect(res).to.have.status(200);
               expect(res.body).to.have.property('clients').with.lengthOf(1);
             });
@@ -88,12 +88,12 @@ describe('Users Controller', () => {
         });
 
         describe('Using Names and IDs', () => {
-          it('When the request is looking for Users by an existing ID or Name', (done) => {
+          it('When the request is looking for Clients by an existing ID or Name', (done) => {
             const mockSearchObject = {
               names: ['Britney'],
               ids: ['a0ece5db-cd14-4f21-812f-966633e7be86'],
             };
-            chai.request(api).get('/users').send(mockSearchObject).set('Authentication', authenticationToken).end((error, res) => {
+            chai.request(api).get('/clients').send(mockSearchObject).set('Authentication', authenticationToken).end((error, res) => {
               expect(res).to.have.status(200);
               expect(res.body).to.have.property('clients').with.lengthOf(1);
             });
@@ -101,10 +101,10 @@ describe('Users Controller', () => {
           });
         });
       });
-      describe('When executing as an User', () => {
+      describe('When executing as an Client', () => {
         let authenticationToken = '';
         before((done) => {
-          // Create Session Token as User for testing.
+          // Create Session Token as Client for testing.
           const mockAuthenticationObject = {
             email: 'barnettblankenship@quotezart.com',
           };
@@ -115,31 +115,31 @@ describe('Users Controller', () => {
           done();
         });
         describe('Using IDs', () => {
-          it('When the request is looking for an User with existing ID', (done) => {
+          it('When the request is looking for an Client with existing ID', (done) => {
             const mockSearchObject = {
               ids: ['a0ece5db-cd14-4f21-812f-966633e7be86'],
             };
-            chai.request(api).get('/users').send(mockSearchObject).set('Authentication', authenticationToken).end((error, res) => {
+            chai.request(api).get('/clients').send(mockSearchObject).set('Authentication', authenticationToken).end((error, res) => {
               expect(res).to.have.status(200);
               expect(res.body).to.have.property('clients');
             });
             done();
           });
-          it('When the request is looking for Users by two existing IDs', (done) => {
+          it('When the request is looking for Clients by two existing IDs', (done) => {
             const mockSearchObject = {
               ids: ['a0ece5db-cd14-4f21-812f-966633e7be86', 'e8fd159b-57c4-4d36-9bd7-a59ca13057bb'],
             };
-            chai.request(api).get('/users').send(mockSearchObject).set('Authentication', authenticationToken).end((error, res) => {
+            chai.request(api).get('/clients').send(mockSearchObject).set('Authentication', authenticationToken).end((error, res) => {
               expect(res).to.have.status(200);
               expect(res.body).to.have.property('clients').with.lengthOf(2);
             });
             done();
           });
-          it('When the request is looking for Users by an existing ID and an inexistent ID', (done) => {
+          it('When the request is looking for Clients by an existing ID and an inexistent ID', (done) => {
             const mockSearchObject = {
               ids: ['a0ece5db-cd14-4f21-812f-966633e7be86', '000'],
             };
-            chai.request(api).get('/users').send(mockSearchObject).set('Authentication', authenticationToken).end((error, res) => {
+            chai.request(api).get('/clients').send(mockSearchObject).set('Authentication', authenticationToken).end((error, res) => {
               expect(res).to.have.status(200);
               expect(res.body).to.have.property('clients').with.lengthOf(1);
             });
@@ -147,32 +147,32 @@ describe('Users Controller', () => {
           });
         });
         describe('Using Names', () => {
-          it('When the request is looking for an User by a single existing Name', (done) => {
+          it('When the request is looking for an Client by a single existing Name', (done) => {
             const mockSearchObject = {
               names: ['Britney'],
             };
-            chai.request(api).get('/users').send(mockSearchObject).set('Authentication', authenticationToken).end((error, res) => {
+            chai.request(api).get('/clients').send(mockSearchObject).set('Authentication', authenticationToken).end((error, res) => {
               expect(res).to.have.status(200);
               expect(res.body).to.have.property('clients');
             });
             done();
           });
-          it('When the request is looking for Users by two existing Names', (done) => {
+          it('When the request is looking for Clients by two existing Names', (done) => {
             const mockSearchObject = {
               names: ['Britney', 'Manning'],
             };
-            chai.request(api).get('/users').send(mockSearchObject).set('Authentication', authenticationToken).end((error, res) => {
+            chai.request(api).get('/clients').send(mockSearchObject).set('Authentication', authenticationToken).end((error, res) => {
               expect(res).to.have.status(200);
               expect(res.body).to.have.property('clients').with.lengthOf(2);
             });
             done();
           });
-          it('When the request is looking for Users by an existing Name and an inexistent Name', (done) => {
+          it('When the request is looking for Clients by an existing Name and an inexistent Name', (done) => {
             const mockSearchObject = {
               ids: ['a0ece5db-cd14-4f21-812f-966633e7be86'],
               names: ['Britney'],
             };
-            chai.request(api).get('/users').send(mockSearchObject).set('Authentication', authenticationToken).end((error, res) => {
+            chai.request(api).get('/clients').send(mockSearchObject).set('Authentication', authenticationToken).end((error, res) => {
               expect(res).to.have.status(200);
               expect(res.body).to.have.property('clients').with.lengthOf(1);
             });
@@ -182,17 +182,17 @@ describe('Users Controller', () => {
       });
     });
     describe('Fails', (done) => {
-      it('When the request is done by an unauthenticated User, then return 401 error', (done) => {
+      it('When the request is done by an unauthenticated Client, then return 401 error', (done) => {
         const mockSearchObject = {
           ids: ['a0ece5db-cd14-4f21-812f-966633e7be86'],
         };
-        chai.request(api).get('/users').send(mockSearchObject).end((error, res) => {
+        chai.request(api).get('/clients').send(mockSearchObject).end((error, res) => {
           expect(res).to.have.status(401);
           expect(res.body).to.have.property('error');
         });
         done();
       });
-      it('When the request is done by an unauthorized User, then return 403 error', (done) => {
+      it('When the request is done by an unauthorized Client, then return 403 error', (done) => {
         const mockSearchObject = {
           ids: ['a0ece5db-cd14-4f21-812f-966633e7be86'],
         };
@@ -202,7 +202,7 @@ describe('Users Controller', () => {
           role: 'unexpected-role',
         };
         const fakeToken = new AuthenticationService().encodeData(mockAuthenticationClaim);
-        chai.request(api).get('/users').send(mockSearchObject).set('Authentication', fakeToken).end((error, res) => {
+        chai.request(api).get('/clients').send(mockSearchObject).set('Authentication', fakeToken).end((error, res) => {
           expect(res).to.have.status(403);
           expect(res.body).to.have.property('error');
         });
@@ -210,8 +210,8 @@ describe('Users Controller', () => {
       });
     });
   });
-  describe('Users Resource', () => {
-    describe('Returns a valid User', () => {
+  describe('Clients Resource', () => {
+    describe('Returns a valid Client', () => {
       describe('When executing as an Admin', () => {
         let authenticationToken = '';
         before((done) => {
@@ -226,18 +226,18 @@ describe('Users Controller', () => {
           done();
         });
         it('When using an existing ID', (done) => {
-          const userId = 'a0ece5db-cd14-4f21-812f-966633e7be86';
-          chai.request(api).get(`/users/${userId}`).set('Authentication', authenticationToken).end((error, res) => {
+          const clientId = 'a0ece5db-cd14-4f21-812f-966633e7be86';
+          chai.request(api).get(`/clients/${clientId}`).set('Authentication', authenticationToken).end((error, res) => {
             expect(res).to.have.status(200);
             expect(res.body).to.have.property('id');
           });
           done();
         });
       });
-      describe('When executing as an User', () => {
+      describe('When executing as an Client', () => {
         let authenticationToken = '';
         before((done) => {
-          // Create Session Token as User for testing.
+          // Create Session Token as Client for testing.
           const mockAuthenticationObject = {
             email: 'barnettblankenship@quotezart.com',
           };
@@ -248,8 +248,8 @@ describe('Users Controller', () => {
           done();
         });
         it('When using an existing ID', (done) => {
-          const userId = 'a0ece5db-cd14-4f21-812f-966633e7be86';
-          chai.request(api).get(`/users/${userId}`).set('Authentication', authenticationToken).end((error, res) => {
+          const clientId = 'a0ece5db-cd14-4f21-812f-966633e7be86';
+          chai.request(api).get(`/clients/${clientId}`).set('Authentication', authenticationToken).end((error, res) => {
             expect(res).to.have.status(200);
             expect(res.body).to.have.property('id');
           });
@@ -258,36 +258,36 @@ describe('Users Controller', () => {
       });
     });
     describe('Fails', (done) => {
-      it('When the request is done by an unauthenticated User, then return 401 error', (done) => {
-        const mockUserId = 'a0ece5db-cd14-4f21-812f-966633e7be86';
-        chai.request(api).get(`/users/${mockUserId}`).end((error, res) => {
+      it('When the request is done by an unauthenticated Client, then return 401 error', (done) => {
+        const mockClientId = 'a0ece5db-cd14-4f21-812f-966633e7be86';
+        chai.request(api).get(`/clients/${mockClientId}`).end((error, res) => {
           expect(res).to.have.status(401);
           expect(res.body).to.have.property('error');
         });
         done();
       });
-      it('When the request is done by an unauthorized User, then return 403 error', (done) => {
-        const mockUserId = 'a0ece5db-cd14-4f21-812f-966633e7be86';
+      it('When the request is done by an unauthorized Client, then return 403 error', (done) => {
+        const mockClientId = 'a0ece5db-cd14-4f21-812f-966633e7be86';
         const AuthenticationService = require('../../src/services/authentication');
         const mockAuthenticationClaim = {
           id: 'fake-id',
           role: 'unexpected-role',
         };
         const fakeToken = new AuthenticationService().encodeData(mockAuthenticationClaim);
-        chai.request(api).get(`/users/${mockUserId}`).set('Authentication', fakeToken).end((error, res) => {
+        chai.request(api).get(`/clients/${mockClientId}`).set('Authentication', fakeToken).end((error, res) => {
           expect(res).to.have.status(403);
           expect(res.body).to.have.property('error');
         });
         done();
       });
       it('When the request is looking for an inexistent ID, then return 404 error with explanation', (done) => {
-        const userId = '000';
+        const clientId = '000';
         const AuthenticationService = require('../../src/services/authentication');
         const mockAuthenticationObject = {
           email: 'britneyblankenship@quotezart.com',
         };
         const authenticationToken = new AuthenticationService().authenticate(mockAuthenticationObject);
-        chai.request(api).get(`/users/${userId}`).set('Authentication', authenticationToken).end((error, res) => {
+        chai.request(api).get(`/clients/${clientId}`).set('Authentication', authenticationToken).end((error, res) => {
           expect(res).to.have.status(404);
           expect(res.body).to.have.property('message');
         });

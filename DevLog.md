@@ -209,3 +209,11 @@ Before moving into other technical aspects of the API, I wanted to take a moment
 My process here was to check each file and verify that my JSDocs comments were complete and meaningful. I verified my methods and completed the missing fields where appropriate.
 
 After reading thru the code-base with some care for overall structure rather than per-file structure, I found that there were some naming problems on the Users side of things.
+
+### Rename Users to Clients
+
+This is a change I decided to implement to better reflect the actual meaning of the data.
+
+While Clients are also Users, they are referred to as Clients in most of the application, except on the Code, where they are still called Users.
+
+Changing this to an uniform format should help alleviate confusion and will allow me to keep the term Users for API Users, not Clients.

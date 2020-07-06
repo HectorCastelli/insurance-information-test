@@ -6,11 +6,11 @@ const DatabaseService = require('./database');
  */
 class PoliciesService {
   /**
-   * Finds one or more Users that have an ID on the userIds array.
+   * Finds one or more Clients that have an ID on the clientIds array.
    *
    * @param {string} policyIds The list of IDs of Policies.
    * @return {array<Client>} The list of Clients that match the criteria
-   * @memberof UsersService
+   * @memberof ClientsService
    */
   searchByID(...policyIds) {
     if (policyIds.filter((x) => x).length == 0) {
@@ -23,24 +23,24 @@ class PoliciesService {
   }
 
   /**
-   * Finds one of more Policies that belong to a user with an ID listed on the userIds array
+   * Finds one of more Policies that belong to a client with an ID listed on the clientIds array
    *
-   * @param {*} userIds The list of UserIDs of Policies
+   * @param {*} clientIds The list of ClientIDs of Policies
    * @return {array<Policy>} The list of Policies that match the criteria
    * @memberof PoliciesService
    */
-  searchByUserID(...userIds) {
-    if (userIds.filter((x) => x).length == 0) {
+  searchByClientID(...clientIds) {
+    if (clientIds.filter((x) => x).length == 0) {
       throw new TypeError('There were no IDs to look for');
     } else {
       const database = new DatabaseService();
       const policiesList = database.fetchPolicies();
-      return policiesList.filter((policy) => userIds.includes(policy.clientId));
+      return policiesList.filter((policy) => clientIds.includes(policy.clientId));
     }
   }
 
   /**
-   * Finds one of more Policies that are managed by a user with an Email listed on the emails array
+   * Finds one of more Policies that are managed by a client with an Email listed on the emails array
    *
    * @param {*} emails The list of Advisor Emails of Policies
    * @return {array<Policy>} The list of Policies that match the criteria

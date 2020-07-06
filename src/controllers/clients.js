@@ -2,48 +2,48 @@ const express = require('express');
 const router = new express.Router();
 
 const { validate, Joi } = require('express-validation');
-const UserService = require('../services/users');
-const userService = new UserService();
+const Clientservice = require('../services/clients');
+const clientservice = new Clientservice();
 
 const { authenticationMiddleware } = require('../middleware/authentication');
 
-const userSearchValidation = {
+const clientsearchValidation = {
   body: Joi.object({
     ids: Joi.array().items(Joi.string()).optional(),
     names: Joi.array().items(Joi.string()).optional(),
   }),
 };
 
-router.get('/', authenticationMiddleware('user', 'admin'), validate(userSearchValidation), (req, res) => {
+router.get('/', authenticationMiddleware('user', 'admin'), validate(clientsearchValidation), (req, res) => {
   const searchParameters = req.body;
   const results = {
     'clients': [],
   };
   if (searchParameters.ids) {
-    userService.searchByID(...searchParameters.ids).forEach((user) => {
-      results.clients.push(user);
+    clientservice.searchByID(...searchParameters.ids).forEach((client) => {
+      results.clients.push(client);
     });
   }
   if (searchParameters.names) {
-    userService.searchByName(...searchParameters.names).forEach((user) => {
-      results.clients.push(user);
+    clientservice.searchByName(...searchParameters.names).forEach((client) => {
+      results.clients.push(client);
     });
   }
   if (results.clients.length > 0) {
     results.clients = Array.from(new Set(results.clients).values());
     res.send(results);
   } else {
-    res.status(404).send({ message: `No Users found that match the parameters: ${searchParameters}` });
+    res.status(404).send({ message: `No Clients found that match the parameters: ${searchParameters}` });
   }
 });
 
 router.get('/:id/', authenticationMiddleware('user', 'admin'), (req, res) => {
-  const userId = req.params.id;
-  const user = userService.searchByID(userId).pop();
-  if (user) {
-    res.send(user);
+  const clientId = req.params.id;
+  const client = clientservice.searchByID(clientId).pop();
+  if (client) {
+    res.send(client);
   } else {
-    res.status(404).send({ message: `No Users found with the ID: ${userId}` });
+    res.status(404).send({ message: `No Clients found with the ID: ${clientId}` });
   }
 });
 

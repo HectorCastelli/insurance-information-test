@@ -1,32 +1,32 @@
 const DatabaseService = require('./database');
 /**
- * The service for managing Users/Clients
+ * The service for managing Clients/Clients
  *
- * @class UsersService
+ * @class ClientsService
  */
-class UsersService {
+class ClientsService {
   /**
-   * Finds one or more Users that have an ID on the userIds array.
+   * Finds one or more Clients that have an ID on the clientIds array.
    *
-   * @param {string} userIds The list of IDs of Users.
+   * @param {string} clientIds The list of IDs of Clients.
    * @return {array<Client>} The list of Clients that match the criteria
-   * @memberof UsersService
+   * @memberof ClientsService
    */
-  searchByID(...userIds) {
-    if (userIds.filter((x) => x).length == 0) {
+  searchByID(...clientIds) {
+    if (clientIds.filter((x) => x).length == 0) {
       throw new TypeError('There were no IDs to look for');
     } else {
       const database = new DatabaseService();
       const clientList = database.fetchClients();
-      return clientList.filter((client) => userIds.includes(client.id));
+      return clientList.filter((client) => clientIds.includes(client.id));
     }
   }
   /**
-   * Finds one or more Users that have a Name on the names array.
+   * Finds one or more Clients that have a Name on the names array.
    *
-   * @param {string} names The list of Names of Users.
+   * @param {string} names The list of Names of Clients.
    * @return {array<Client>} The list of Clients that match the criteria
-   * @memberof UsersService
+   * @memberof ClientsService
    */
   searchByName(...names) {
     if (names.filter((x) => x).length == 0) {
@@ -39,4 +39,4 @@ class UsersService {
   }
 }
 
-module.exports = UsersService;
+module.exports = ClientsService;
