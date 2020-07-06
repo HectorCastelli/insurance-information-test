@@ -241,7 +241,7 @@ These tags will be created with the format: "Session <number>" and will be added
 To do this in a way that would keep date-related information on the Tags I ran a script based on the commit numbers:
 
 ```bash
-git checkout 9a79561;
+git checkout db7fe6a;
 GIT_COMMITTER_DATE="$(git show --format=%aD | head -1)" git tag -a "Session4" -m "Session 4";
 git checkout master;
 
@@ -265,3 +265,9 @@ git checkout master;
 ### Final changes
 
 All there is left now is to update the README.md file and include the necessary information.
+
+## Conclusions
+
+While working on this project I tried to plan my moves ahead of time and create one commit per session-task. While in most cases this was achieved, there are some commits that are not 1-1 with session tasks.
+
+Something I perceived as very useful was adopting standards on the start of the project and then not working on anything other than what I have planned for that session. This really helped me get thru the task quickly and safely, without having to worry about missing a requirement or not.
