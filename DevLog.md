@@ -223,3 +223,7 @@ Changing this to an uniform format should help alleviate confusion and will allo
 To speed up this process, I decided to use JSDoc to generate a collection of webpages for developers to read when in doubt.
 
 This can done running  `npm run dev-docs` and will create a documentation folder inside the project.
+
+### Creating a user-manual
+
+The documentation for end-users is very important. I have chosen to write the documentation by hand, to make sure that its cohesive and has all the necessary information.
