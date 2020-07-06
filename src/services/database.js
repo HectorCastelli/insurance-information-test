@@ -6,7 +6,9 @@
  */
 class DatabaseService {
   /**
-   *Creates an instance of DatabaseService.
+   * Creates an instance of DatabaseService.
+   * Calling this constructor also populates the Clients and Policies databases.
+   *
    * @memberof DatabaseService
    */
   constructor() {
@@ -17,7 +19,7 @@ class DatabaseService {
   /**
    * Returns the Client List from the URL.
    *
-   * @return {Object} Client
+   * @return {Object} Client list
    * @memberof DatabaseService
    */
   fetchClients() {
@@ -27,7 +29,7 @@ class DatabaseService {
   /**
    * Returns the Policies List from the URL.
    *
-   * @return {Object} Policies
+   * @return {Object} Policies list
    * @memberof DatabaseService
    */
   fetchPolicies() {

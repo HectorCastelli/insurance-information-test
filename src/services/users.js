@@ -8,7 +8,7 @@ class UsersService {
   /**
    * Finds one or more Users that have an ID on the userIds array.
    *
-   * @param {string} userIds The list of IDs of customers.
+   * @param {string} userIds The list of IDs of Users.
    * @return {array<Client>} The list of Clients that match the criteria
    * @memberof UsersService
    */
@@ -24,7 +24,7 @@ class UsersService {
   /**
    * Finds one or more Users that have a Name on the names array.
    *
-   * @param {string} names The list of Names of customers.
+   * @param {string} names The list of Names of Users.
    * @return {array<Client>} The list of Clients that match the criteria
    * @memberof UsersService
    */

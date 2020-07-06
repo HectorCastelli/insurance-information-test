@@ -18,6 +18,7 @@ class AuthenticationService {
    * Returns the randomly created Secret Key for JWT signing
    *
    * @readonly
+   * @return {string} the Secret Key for JWT signature
    * @memberof AuthenticationService
    */
   get getSecretKey() {
@@ -27,7 +28,7 @@ class AuthenticationService {
   /**
    * Encodes an object into a JWT Token
    *
-   * @param {*} data
+   * @param {*} data The Object you want to encode into a JWT Token
    * @return {string} JWT Token representation of data
    * @memberof AuthenticationService
    */
@@ -38,7 +39,7 @@ class AuthenticationService {
   /**
    * Decodes a JWT Token into the original Object
    *
-   * @param {string} encoded
+   * @param {string} encoded The already encoded JWT Token you want to decode
    * @return {Object} The Decoded object from the JWT Token
    * @memberof AuthenticationService
    */
@@ -49,7 +50,7 @@ class AuthenticationService {
   /**
    * Finds a Client by email and returns the appropriate object for JWT Token creation
    *
-   * @param {Object} authenticationData
+   * @param {Object} authenticationData And object containing the credentials that you want to authenticate in the format: "{email:{string}}"
    * @return {Object} The data to turn into a JWT token
    * @memberof AuthenticationService
    */

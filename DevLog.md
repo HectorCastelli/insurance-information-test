@@ -193,8 +193,19 @@ This way, this API could be used in a versatile way to compile information for r
 
 For the last session of development, my hopes are:
 
+- Verify Documentation quality and get a feel of the codebase
+- Compile a developer-facing documentation page (from the JSDocs comments)
 - Create a user-manual for the API
 - Run the codebase against code-quality tools to spot and fix problems
-- Compile a developer-facing documentation page (from the JSDocs comments)
 - Update Github repository with Tags relevant to each session
 - Update README with instructions to run and test the API
+
+## Final Session
+
+Before moving into other technical aspects of the API, I wanted to take a moment and review what exists here and how it interacts with the rest of the application.
+
+### Improve Documentation Gaps (JSDocs)
+
+My process here was to check each file and verify that my JSDocs comments were complete and meaningful. I verified my methods and completed the missing fields where appropriate.
+
+After reading thru the code-base with some care for overall structure rather than per-file structure, I found that there were some naming problems on the Users side of things.

@@ -8,7 +8,7 @@ class PoliciesService {
   /**
    * Finds one or more Users that have an ID on the userIds array.
    *
-   * @param {string} userIds The list of IDs of customers.
+   * @param {string} policyIds The list of IDs of Policies.
    * @return {array<Client>} The list of Clients that match the criteria
    * @memberof UsersService
    */
@@ -25,7 +25,7 @@ class PoliciesService {
   /**
    * Finds one of more Policies that belong to a user with an ID listed on the userIds array
    *
-   * @param {*} userIds
+   * @param {*} userIds The list of UserIDs of Policies
    * @return {array<Policy>} The list of Policies that match the criteria
    * @memberof PoliciesService
    */
@@ -42,7 +42,7 @@ class PoliciesService {
   /**
    * Finds one of more Policies that are managed by a user with an Email listed on the emails array
    *
-   * @param {*} emails
+   * @param {*} emails The list of Advisor Emails of Policies
    * @return {array<Policy>} The list of Policies that match the criteria
    * @memberof PoliciesService
    */
