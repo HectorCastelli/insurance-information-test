@@ -39,10 +39,10 @@ describe('Authentication Controller', () => {
     });
   });
   describe('Returns an error code', () => {
-    it('When the Request parameters are invalid, then return 403 error with explanation', (done) => {
+    it('When the Request parameters are invalid, then return 400 error with explanation', (done) => {
       const mockAuthenticationObject = {};
       chai.request(api).post('/authentication').send(mockAuthenticationObject).end((error, res) => {
-        expect(res).to.have.status(403);
+        expect(res).to.have.status(400);
         expect(res.body).to.have.property('message');
       });
       done();

@@ -236,4 +236,32 @@ Due to the integration of ESLINT since the beginning of the project, no obvious 
 
 The objective here is to segregate the commits based on the "session", as I have been documenting it on this DevLog.
 
-These tags will be created with the format: "Session <number>" and will be added to all commits of each Session.
+These tags will be created with the format: "Session <number>" and will be added to the final commit of each Session.
+
+To do this in a way that would keep date-related information on the Tags I ran a script based on the commit numbers:
+
+```bash
+git checkout 9a79561;
+GIT_COMMITTER_DATE="$(git show --format=%aD | head -1)" git tag -a "Session4" -m "Session 4";
+git checkout master;
+
+git checkout 573ffbe;
+GIT_COMMITTER_DATE="$(git show --format=%aD | head -1)" git tag -a "Session3" -m "Session 3";
+git checkout master;
+
+git checkout 209f107;
+GIT_COMMITTER_DATE="$(git show --format=%aD | head -1)" git tag -a "Session2" -m "Session 2";
+git checkout master;
+
+git checkout 00f24f0;
+GIT_COMMITTER_DATE="$(git show --format=%aD | head -1)" git tag -a "Session1" -m "Session 1";
+git checkout master;
+
+git checkout f3efea4;
+GIT_COMMITTER_DATE="$(git show --format=%aD | head -1)" git tag -a "Session0" -m "Session 0";
+git checkout master;
+```
+
+### Final changes
+
+All there is left now is to update the README.md file and include the necessary information.
