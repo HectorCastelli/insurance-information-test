@@ -90,7 +90,8 @@ describe('Users Controller', () => {
         describe('Using Names and IDs', () => {
           it('When the request is looking for Users by an existing ID or Name', (done) => {
             const mockSearchObject = {
-              names: ['Britney', 'Name-That-Does-Not-Exist'],
+              names: ['Britney'],
+              ids: ['a0ece5db-cd14-4f21-812f-966633e7be86'],
             };
             chai.request(api).get('/users').send(mockSearchObject).set('Authentication', authenticationToken).end((error, res) => {
               expect(res).to.have.status(200);
@@ -258,38 +259,39 @@ describe('Users Controller', () => {
     });
     describe('Fails', (done) => {
       it('When the request is done by an unauthenticated User, then return 401 error', (done) => {
-        const mockSearchObject = {
-          ids: ['a0ece5db-cd14-4f21-812f-966633e7be86'],
-        };
-        chai.request(api).get('/users').send(mockSearchObject).end((error, res) => {
+        const mockUserId = 'a0ece5db-cd14-4f21-812f-966633e7be86';
+        chai.request(api).get(`/users/${mockUserId}`).end((error, res) => {
           expect(res).to.have.status(401);
           expect(res.body).to.have.property('error');
         });
         done();
       });
       it('When the request is done by an unauthorized User, then return 403 error', (done) => {
-        const mockSearchObject = {
-          ids: ['a0ece5db-cd14-4f21-812f-966633e7be86'],
-        };
+        const mockUserId = 'a0ece5db-cd14-4f21-812f-966633e7be86';
         const AuthenticationService = require('../../src/services/authentication');
         const mockAuthenticationClaim = {
           id: 'fake-id',
           role: 'unexpected-role',
         };
         const fakeToken = new AuthenticationService().encodeData(mockAuthenticationClaim);
-        chai.request(api).get('/users').send(mockSearchObject).set('Authentication', fakeToken).end((error, res) => {
+        chai.request(api).get(`/users/${mockUserId}`).set('Authentication', fakeToken).end((error, res) => {
           expect(res).to.have.status(403);
           expect(res.body).to.have.property('error');
         });
         done();
-        it('When the request is looking for an inexistent ID, then return 404 error with explanation', (done) => {
-          const userId = '000';
-          chai.request(api).get(`/users/${userId}`).set('Authentication', authenticationToken).end((error, res) => {
-            expect(res).to.have.status(404);
-            expect(res.body).to.have.property('message');
-          });
-          done();
+      });
+      it('When the request is looking for an inexistent ID, then return 404 error with explanation', (done) => {
+        const userId = '000';
+        const AuthenticationService = require('../../src/services/authentication');
+        const mockAuthenticationObject = {
+          email: 'britneyblankenship@quotezart.com',
+        };
+        const authenticationToken = new AuthenticationService().authenticate(mockAuthenticationObject);
+        chai.request(api).get(`/users/${userId}`).set('Authentication', authenticationToken).end((error, res) => {
+          expect(res).to.have.status(404);
+          expect(res.body).to.have.property('message');
         });
+        done();
       });
     });
   });
