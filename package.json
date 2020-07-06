@@ -1,6 +1,6 @@
 {
   "name": "insurance-information-test",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A sample/test application that manages insurance information (mock data).",
   "main": "src/api.js",
   "directories": {

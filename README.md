@@ -1,4 +1,4 @@
-# insurance-information-test
+# Insurance Information Test API
 
 A sample/test application that manages insurance information (mock data).
 
