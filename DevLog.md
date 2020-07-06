@@ -231,3 +231,9 @@ The documentation for end-users is very important. I have chosen to write the do
 ### Checking Code quality
 
 Due to the integration of ESLINT since the beginning of the project, no obvious problems were found by a code-analysis tool.
+
+### Updating Github with Session tags
+
+The objective here is to segregate the commits based on the "session", as I have been documenting it on this DevLog.
+
+These tags will be created with the format: "Session <number>" and will be added to all commits of each Session.
