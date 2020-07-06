@@ -8,7 +8,8 @@
   },
   "scripts": {
     "launch": "node ./src/api.js",
-    "test": "mocha --recursive"
+    "test": "mocha --recursive",
+    "dev-docs": "node_modules/.bin/jsdoc -c jsdoc.json"
   },
   "repository": {
     "type": "git",
@@ -35,8 +36,10 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
+    "docdash": "^1.2.0",
     "eslint": "^7.4.0",
     "eslint-config-google": "^0.14.0",
+    "jsdoc": "^3.6.4",
     "mocha": "^8.0.1"
   }
 }

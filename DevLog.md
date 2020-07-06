@@ -217,3 +217,9 @@ This is a change I decided to implement to better reflect the actual meaning of 
 While Clients are also Users, they are referred to as Clients in most of the application, except on the Code, where they are still called Users.
 
 Changing this to an uniform format should help alleviate confusion and will allow me to keep the term Users for API Users, not Clients.
+
+### Developer-facing documentation
+
+To speed up this process, I decided to use JSDoc to generate a collection of webpages for developers to read when in doubt.
+
+This can done running  `npm run dev-docs` and will create a documentation folder inside the project.

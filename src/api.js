@@ -8,7 +8,6 @@ const port = 3000;
 
 app.get('/', (req, res) => res.send('Hello World!'));
 
-// TODO: Automatically load routes based on name of file under ./controllers/
 const authenticationRouter = require('./controllers/authentication');
 app.use('/authentication', authenticationRouter);
 
